@@ -21,5 +21,9 @@ fun main() {
     }
     println(linkedList)
 
+    linkedList.createCircularDependency(2)
+    println(linkedList.hasCycle())
+
+
 }
 

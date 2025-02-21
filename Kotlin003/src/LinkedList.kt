@@ -16,6 +16,38 @@ class LinkedList<T> {
         }
     }
 
+    fun hasCycle(): Boolean{
+        var slow = head
+        var fast = head
+
+        while (fast != null && fast.next != null){
+            slow = slow?.next
+            fast = fast?.next?.next
+
+            if(slow == fast){
+                return true
+            }
+        }
+
+        return false
+    }
+
+    fun createCircularDependency(position: Int){
+        var current = head
+        var cycleNode: Node<T>? = null
+        var count: Int = 0
+
+        while (current?.next != null){
+            if(count == position){
+                cycleNode = current
+            }
+            current = current.next
+            count++
+        }
+
+        current?.next = cycleNode
+    }
+
     fun push(value: T): LinkedList<T>{
         newNode = Node(value = value, next = null)
         if(head == null){
